@@ -19,7 +19,8 @@
 <ion-content>
   <ion-list>
     <!-- Sliding item with icon end options on end side -->
-    <ion-item-sliding *ngFor="let item of alarms">
+    <ion-item-sliding *ngFor="let item of alarms"
+                      #ionItemSliding>
       <ion-item class="item-ribbon"
                 detail>
         <span *ngIf="item.alarmAffirm"
@@ -52,7 +53,7 @@
       <ion-item-options side="end">
         <ion-item-option color="medium"
                          [disabled]="item.alarmAffirm"
-                         (click)="presentAlert(item)">
+                         (click)="presentAlert(item, ionItemSliding)">
           <ion-icon slot="icon-only"
                     name="remove-circle"></ion-icon>
           <ion-label>

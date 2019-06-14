@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController, AlertController, ActionSheetController } from '@ionic/angular';
+import { ModalController, AlertController, ActionSheetController, IonItemSliding } from '@ionic/angular';
 import * as moment from 'moment';
 
 @Component({
@@ -80,7 +80,7 @@ export class AlarmDetailPage implements OnInit {
     return alarms;
   }
 
-  async presentAlert(alarmItem: any) {
+  async presentAlert(alarmItem: any, ionItemSliding: IonItemSliding) {
     if (alarmItem.alarmAffirm) {
       return;
     }
@@ -100,6 +100,7 @@ export class AlarmDetailPage implements OnInit {
           handler: () => {
             alarmItem.alarmAffirm = true;
             alarmItem.alarmAffirmTime = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+            ionItemSliding.close();
           }
         }
       ]
