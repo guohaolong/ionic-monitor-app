@@ -16,7 +16,7 @@ iOS:
 $ ionic cordova platform add ios
 $ ionic cordova run ios
 
-ionic cordova build ios
+$ ionic cordova build ios
 ```
 
 Android:
