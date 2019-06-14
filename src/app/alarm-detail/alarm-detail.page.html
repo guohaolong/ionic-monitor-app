@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only"
+                  name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentActionSheet()">
+        <ion-icon slot="icon-only"
+                  name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{level}} Alarm</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <!-- Sliding item with icon end options on end side -->
+    <ion-item-sliding *ngFor="let item of alarms">
+      <ion-item class="item-ribbon"
+                detail>
+        <span *ngIf="item.alarmAffirm"
+              class="ribbon">
+          <span>CFMD</span>
+        </span>
+        <ion-label>
+          <h2>{{item.name}}</h2>
+          <p>
+            <ion-icon name="time"
+                      color="danger"></ion-icon> Alarm Time: {{item.time}}
+          </p>
+          <p>
+            <ion-icon name="flash"
+                      color="primary"></ion-icon> Trigger Value: {{item.triggerValue}}
+          </p>
+          <p *ngIf="item.alarmAffirm">
+            <ion-icon name="person"></ion-icon> Confirmed by: {{item.alarmAffirmUser}}
+          </p>
+          <p *ngIf="item.alarmAffirm">
+            <ion-icon name="clock"
+                      color="warning"></ion-icon> Confirmed at: {{item.alarmAffirmTime}}
+          </p>
+        </ion-label>
+        <!-- <ion-note slot="end">
+          {{item.equipName}}
+        </ion-note> -->
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="medium"
+                         [disabled]="item.alarmAffirm"
+                         (click)="presentAlert(item)">
+          <ion-icon slot="icon-only"
+                    name="remove-circle"></ion-icon>
+          <ion-label>
+            ACK
+          </ion-label>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+
+</ion-content>

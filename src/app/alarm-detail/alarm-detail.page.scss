@@ -1,0 +1,35 @@
+h2 {
+  margin-bottom: 0.5rem;
+}
+
+.item-ribbon{
+  background-color: #fff;
+  position: relative;
+  filter: none;
+  opacity: 1;
+  .ribbon {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    z-index: 2;
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
+    text-align: right;
+    span {
+      font-size: xx-small;
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 20px;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      width: 100px;
+      display: block;
+      background-color: red;
+      position: absolute;
+      top: 19px;
+      right: -21px;
+    }
+  }
+}

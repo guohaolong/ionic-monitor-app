@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only"
+                  name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>History Query</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Device Name</ion-label>
+    <ion-select value="all"
+                okText="OK"
+                cancelText="Cancel">
+      <ion-select-option value="all">All</ion-select-option>
+      <ion-select-option value="ENV_TH1">ENV_TH1</ion-select-option>
+      <ion-select-option value="ENV_TH2">ENV_TH2</ion-select-option>
+      <ion-select-option value="ENV_DI">ENV_DI</ion-select-option>
+      <ion-select-option value="ENV_4DI">ENV_4DI</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Start Date</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD HH:mm"
+                  min="2018"
+                  max="2050"
+                  value="{{startDate}}"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>End Date</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD HH:mm"
+                  min="2018"
+                  max="2050"
+                  value="{{endDate}}"></ion-datetime>
+  </ion-item>
+
+  <ion-button expand="block"
+              shape="round"
+              (click)="queryAlarms()">Query</ion-button>
+
+  <ion-item *ngFor="let item of alarms">
+    <ion-icon *ngIf="item.levelString === 'Critical'"
+              name="alert"
+              color="danger"
+              slot="start"></ion-icon>
+    <ion-icon *ngIf="item.levelString === 'Moderate'"
+              name="warning"
+              color="warning"
+              slot="start"></ion-icon>
+    <ion-icon *ngIf="item.levelString === 'Low'"
+              name="information-circle"
+              color="secondary"
+              slot="start"></ion-icon>
+    <ion-label>
+      <h2>{{item.name}}</h2>
+      <p>
+        <ion-icon name="outlet"
+                  color="secondary"></ion-icon> Device Name: {{item.equipName}}
+      </p>
+      <p>
+        <ion-icon name="time"
+                  color="danger"></ion-icon> Start: {{item.time}}
+      </p>
+      <p>
+        <ion-icon name="time"
+                  color="success"></ion-icon> End: {{item.time}}
+      </p>
+      <p>
+        <ion-icon name="flash"
+                  color="primary"></ion-icon> Trigger Value: {{item.triggerValue}}
+      </p>
+      <p>
+        <ion-icon name="person"></ion-icon> Confirmed By: {{item.confirmor}}
+      </p>
+      <p>
+        <ion-icon name="clock"
+                  color="warning"></ion-icon> Confirmed: {{item.confirmTime}}
+      </p>
+    </ion-label>
+  </ion-item>
+
+  <!-- fab placed to the (vertical) center and end -->
+  <ion-fab *ngIf="alarms.length > 0"
+           vertical="center"
+           horizontal="end"
+           slot="fixed">
+    <ion-fab-button color="danger"
+                    size="small"
+                    (click)="clearAlarms()">
+      <ion-icon name="close"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

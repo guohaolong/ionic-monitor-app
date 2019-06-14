@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Alarm
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Current Alarms
+    </ion-list-header>
+    <ion-item (click)="presentModal('Critical')"
+              detail>
+      <ion-icon name="alert"
+                color="danger"
+                slot="start"></ion-icon>
+      <ion-label>
+        Critical
+      </ion-label>
+      <ion-badge color="danger"
+                 slot="end">3</ion-badge>
+    </ion-item>
+    <ion-item (click)="presentModal('Moderate')"
+              detail>
+      <ion-icon name="warning"
+                color="warning"
+                slot="start"></ion-icon>
+      <ion-label>
+        Moderate
+      </ion-label>
+      <ion-badge color="warning"
+                 slot="end">16</ion-badge>
+    </ion-item>
+    <ion-item (click)="presentModal('Low')"
+              detail>
+      <ion-icon name="information-circle"
+                color="secondary"
+                slot="start"></ion-icon>
+      <ion-label>
+        Low
+      </ion-label>
+      <ion-badge color="secondary"
+                 slot="end">22</ion-badge>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      History Alarms
+    </ion-list-header>
+    <ion-item (click)="presentQueryModal()"
+              detail>
+      <ion-icon name="clipboard"
+                color="primary"
+                slot="start"></ion-icon>
+      <ion-label>
+        Query
+      </ion-label>
+    </ion-item>
+
+    <ion-item (click)="presentModal('Critical')"
+              detail>
+      <ion-icon name="stats"
+                color="primary"
+                slot="start"></ion-icon>
+      <ion-label>
+        Report
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
