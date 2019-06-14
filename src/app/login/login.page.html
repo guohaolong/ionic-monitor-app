@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Monitor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center
+                 size-md="6"
+                 size-lg="5"
+                 size-xs="12">
+          <div text-center>
+            <h4>Login</h4>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input type="text"
+                         name="userName"
+                         placeholder="Username"
+                         [(ngModel)]="user.userName"
+                         required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="password"
+                         name="password"
+                         placeholder="Password"
+                         [(ngModel)]="user.password"
+                         required></ion-input>
+            </ion-item>
+          </div>
+
+          <div padding>
+            <ion-button size="large"
+                        expand="block"
+                        (click)="login()"
+                        [disabled]="form.invalid">Login</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
