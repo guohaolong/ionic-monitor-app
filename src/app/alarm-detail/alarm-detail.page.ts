@@ -98,8 +98,7 @@ export class AlarmDetailPage implements OnInit {
         {
           text: 'OK',
           handler: () => {
-            alarmItem.alarmAffirm = true;
-            alarmItem.alarmAffirmTime = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+            this.acknowledgeAlarm(alarmItem);
             ionItemSliding.close();
           }
         }
@@ -109,14 +108,23 @@ export class AlarmDetailPage implements OnInit {
     await alert.present();
   }
 
+  private acknowledgeAlarm(alarmItem: any) {
+    alarmItem.alarmAffirm = true;
+    alarmItem.alarmAffirmTime = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+  }
+
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Alarm',
       buttons: [{
-        text: 'Acknowledge All',
+        text: 'ACK All',
         icon: 'remove-circle',
         handler: () => {
-          console.log('Acknowledge All clicked');
+          this.alarms.forEach((alarm) => {
+            if (!alarm.alarmAffirm) {
+              this.acknowledgeAlarm(alarm);
+            }
+          });
         }
       }, {
         text: 'Cancel',
@@ -127,6 +135,13 @@ export class AlarmDetailPage implements OnInit {
       }]
     });
     await actionSheet.present();
+  }
+
+  doRefresh(event: any) {
+    setTimeout(() => {
+      this.alarms = this.getAlarmDetails(this.level);
+      event.target.complete();
+    }, 2000);
   }
 
   async closeModal() {
