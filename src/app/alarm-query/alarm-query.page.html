@@ -40,7 +40,11 @@
 
   <ion-button expand="block"
               shape="round"
-              (click)="queryAlarms()">Query</ion-button>
+              [disabled]="isQuerying"
+              (click)="queryAlarms()">
+    <ion-spinner *ngIf="isQuerying"></ion-spinner>
+    <ion-label *ngIf="!isQuerying">Query</ion-label>
+  </ion-button>
 
   <ion-item *ngFor="let item of alarms">
     <ion-icon *ngIf="item.levelString === 'Critical'"
@@ -84,7 +88,7 @@
   </ion-item>
 
   <!-- fab placed to the (vertical) center and end -->
-  <ion-fab *ngIf="alarms.length > 0"
+  <ion-fab *ngIf="alarms && (alarms.length > 0)"
            vertical="center"
            horizontal="end"
            slot="fixed">

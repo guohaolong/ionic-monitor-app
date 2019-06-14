@@ -12,6 +12,7 @@ export class AlarmQueryPage implements OnInit {
   startDate: string;
   endDate: string;
   alarms: Array<any>;
+  isQuerying: boolean;
 
   constructor(
     public modalController: ModalController,
@@ -42,8 +43,14 @@ export class AlarmQueryPage implements OnInit {
   }
 
   queryAlarms() {
-    this.getAlarms();
-    this.presentToast(`${this.alarms.length} entries were queried.`);
+    this.alarms = [];
+    this.isQuerying = true;
+
+    setTimeout(() => {
+      this.isQuerying = false;
+      this.getAlarms();
+      this.presentToast(`${this.alarms.length} entries were queried.`);
+    }, 2500);
   }
 
   clearAlarms() {
