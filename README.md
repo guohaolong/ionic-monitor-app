@@ -15,12 +15,16 @@ iOS:
 ```sh
 $ ionic cordova platform add ios
 $ ionic cordova run ios
+
+ionic cordova build ios
 ```
 
 Android:
 ```sh
 $ ionic cordova platform add android
 $ ionic cordova run android
+
+$ ionic cordova build android
 ```
 ## Launching the App
 After installing the needed dependencies you are done, launch your app with a simple
