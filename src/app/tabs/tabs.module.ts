@@ -6,13 +6,18 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
+import { AlarmDetailPageModule } from '../alarm-detail/alarm-detail.module';
+import { AlarmQueryPageModule } from '../alarm-query/alarm-query.module';
+
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    TabsPageRoutingModule
+    TabsPageRoutingModule,
+    AlarmDetailPageModule,
+    AlarmQueryPageModule
   ],
   declarations: [TabsPage]
 })
