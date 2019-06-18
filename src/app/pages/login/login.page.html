@@ -37,7 +37,10 @@
             <ion-button size="large"
                         expand="block"
                         (click)="login()"
-                        [disabled]="form.invalid">Login</ion-button>
+                        [disabled]="form.invalid || isLogining">
+              <ion-spinner *ngIf="isLogining"></ion-spinner>
+              <ion-label *ngIf="!isLogining">Login</ion-label>
+            </ion-button>
           </div>
         </ion-col>
       </ion-row>

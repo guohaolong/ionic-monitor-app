@@ -9,18 +9,34 @@ import { AuthService, User } from '../../services/auth.service';
 })
 export class LoginPage implements OnInit {
 
+  isLogining: boolean;
+
   user: User = {
     userName: 'admin',
     password: '123456'
   };
-  constructor(private router: Router, private authService: AuthService) { }
+
+
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+  ) { }
 
   ngOnInit() {
   }
 
   login(): void {
-    this.authService.login(this.user);
-    this.router.navigateByUrl('/tabs/home');
+    this.isLogining = true;
+    this.authService.login(this.user).subscribe(response => {
+      if (response && response.status === 200) {
+        this.router.navigateByUrl('/tabs/home');
+      }
+    }, error => {
+      console.error(error);
+      this.isLogining = false;
+    }, () => {
+      this.isLogining = false;
+    });
   }
 
 }
