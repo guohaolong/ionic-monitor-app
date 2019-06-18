@@ -1,62 +1,26 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import chartJs from 'chart.js';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-home',
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
 })
-export class Tab1Page implements OnInit {
+export class HomePage implements OnInit {
 
-  // @ViewChild('barCanvas') barCanvas;
   @ViewChild('pieCanvas') pieCanvas;
   @ViewChild('lineCanvas') lineCanvas;
 
-  barChart: any;
   pieChart: any;
   lineChart: any;
 
   constructor() { }
 
   ngOnInit() {
-    // this.barChart = this.getBarChart();
     this.pieChart = this.getPieChart();
     this.lineChart = this.getLineChart();
   }
-
-  // getBarChart() {
-  //   const data = {
-  //     labels: ['紧急', '重要', '一般'],
-  //     datasets: [{
-  //       label: 'Alarm',
-  //       data: [12, 19, 3],
-  //       backgroundColor: [
-  //         'rgba(255, 99, 132, 0.2)',
-  //         'rgba(255, 206, 86, 0.2)',
-  //         'rgba(54, 162, 235, 0.2)',
-  //       ],
-  //       borderColor: [
-  //         'rgba(255,99,132,1)',
-  //         'rgba(54, 162, 235, 1)',
-  //         'rgba(255, 206, 86, 1)',
-  //       ],
-  //       borderWidth: 1
-  //     }]
-  //   };
-
-  //   const options = {
-  //     scales: {
-  //       yAxes: [{
-  //         ticks: {
-  //           beginAtZero: true
-  //         }
-  //       }]
-  //     }
-  //   };
-
-  //   return this.getChart(this.barCanvas.nativeElement, 'bar', data, options);
-  // }
 
   getPieChart() {
     const data = {
@@ -111,4 +75,5 @@ export class Tab1Page implements OnInit {
       type: chartType,
     });
   }
+
 }

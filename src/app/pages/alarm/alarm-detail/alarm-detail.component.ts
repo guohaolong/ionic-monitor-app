@@ -4,10 +4,10 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'app-alarm-detail',
-  templateUrl: './alarm-detail.page.html',
-  styleUrls: ['./alarm-detail.page.scss'],
+  templateUrl: './alarm-detail.component.html',
+  styleUrls: ['./alarm-detail.component.scss'],
 })
-export class AlarmDetailPage implements OnInit {
+export class AlarmDetailComponent implements OnInit {
 
   @Input() level: string;
   alarms: Array<any>;
@@ -128,7 +128,7 @@ export class AlarmDetailPage implements OnInit {
         }
       }, {
         text: 'Cancel',
-        icon: 'close',
+        icon: 'close-circle',
         handler: () => {
           console.log('Cancel clicked');
         }

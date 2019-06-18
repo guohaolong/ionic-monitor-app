@@ -4,10 +4,10 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'app-alarm-query',
-  templateUrl: './alarm-query.page.html',
-  styleUrls: ['./alarm-query.page.scss'],
+  templateUrl: './alarm-query.component.html',
+  styleUrls: ['./alarm-query.component.scss'],
 })
-export class AlarmQueryPage implements OnInit {
+export class AlarmQueryComponent implements OnInit {
 
   startDate: string;
   endDate: string;
@@ -29,7 +29,7 @@ export class AlarmQueryPage implements OnInit {
     for (let i = 0; i < 5; i++) {
       alarms.push({
         name: `High Hum ${i + 1} Alarm`,
-        triggerValue: '28.60℃',
+        triggerValue: '28.60â„ƒ',
         time: '2019-06-12 17:33:47',
         equipName: 'ENV_TH1',
         confirmor: 'admin',

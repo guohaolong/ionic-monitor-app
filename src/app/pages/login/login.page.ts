@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, User } from '../services/auth.service';
+import { AuthService, User } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +10,8 @@ import { AuthService, User } from '../services/auth.service';
 export class LoginPage implements OnInit {
 
   user: User = {
-    userName: '',
-    password: ''
+    userName: 'admin',
+    password: '123456'
   };
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
 
   login(): void {
     this.authService.login(this.user);
-    this.router.navigateByUrl('/tabs/tab1');
+    this.router.navigateByUrl('/tabs/home');
   }
 
 }
