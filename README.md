@@ -31,4 +31,19 @@ After installing the needed dependencies you are done, launch your app with a si
 ```sh
 $ ionic serve
 ```
+## App Preview
 
+
+- **Login**
+
+<img src="docs/screenshots/Login.png" alt="Login">
+
+
+- **Home**
+
+<img src="docs/screenshots/home.png" alt="Home">
+
+
+- **Alarm**
+
+<img src="docs/screenshots/alarm.gif" alt="Alarm">
