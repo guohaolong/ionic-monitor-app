@@ -41,9 +41,9 @@ $ ionic serve
 
 - **Home**
 
-<img src="docs/screenshots/home.png" alt="Home">
+<img src="docs/screenshots/Home.png" alt="Home">
 
 
 - **Alarm**
 
-<img src="docs/screenshots/alarm.gif" alt="Alarm">
+<img src="docs/screenshots/Alarm.gif" alt="Alarm">
