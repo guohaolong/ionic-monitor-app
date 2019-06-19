@@ -29,11 +29,11 @@ export class AlarmQueryComponent implements OnInit {
     for (let i = 0; i < 5; i++) {
       alarms.push({
         name: `High Hum ${i + 1} Alarm`,
-        triggerValue: '28.60?',
+        triggerValue: '28.60℃',
         time: '2019-06-12 17:33:47',
         equipName: 'ENV_TH1',
         confirmor: 'admin',
-        confirmTime: '2019-06-06 15:19:51',
+        confirmTime: '2019-06-19 15:19:51',
         levelString: (i % 2 === 0 ? 'Critical' : 'Moderate')
       });
     }
