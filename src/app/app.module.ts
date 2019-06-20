@@ -24,11 +24,11 @@ import { MockBackendInterceptor } from './interceptors/mock-backend-interceptor'
       provide: HTTP_INTERCEPTORS,
       useClass: MockBackendInterceptor,
       multi: true
+    },
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
     }
-    // {
-    //   provide: RouteReuseStrategy,
-    //   useClass: IonicRouteStrategy
-    // }
   ],
   bootstrap: [AppComponent]
 })
