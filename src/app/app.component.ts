@@ -1,6 +1,6 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { Platform, IonRouterOutlet, ToastController, ModalController } from '@ionic/angular';
+import { Platform, ToastController, ModalController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
@@ -13,7 +13,6 @@ export class AppComponent {
 
   lastTimeBackPress = 0;
   timePeriodToExit = 2000;
-  @ViewChildren(IonRouterOutlet) routerOutlets: QueryList<IonRouterOutlet>;
 
   constructor(
     private platform: Platform,
