@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockBackendInterceptor } from './interceptors/mock-backend-interceptor';
+import { Camera } from '@ionic-native/camera/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { MockBackendInterceptor } from './interceptors/mock-backend-interceptor'
     StatusBar,
     SplashScreen,
     AuthGuardService,
+    Camera,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MockBackendInterceptor,
