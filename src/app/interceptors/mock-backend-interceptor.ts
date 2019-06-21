@@ -12,9 +12,15 @@ export class MockBackendInterceptor implements HttpInterceptor {
         return Observable.of(null).mergeMap(() => {
             // login
             if (request.url.endsWith('/api/login') && request.method === 'POST') {
-                // get new user object from post body
+                // get user object from post body
                 const user = request.body;
                 sessionStorage.setItem('user', JSON.stringify(user));
+                return Observable.of(new HttpResponse({ status: 200 }));
+            }
+
+            // logout
+            if (request.url.endsWith('/api/logout') && request.method === 'POST') {
+                sessionStorage.removeItem('user');
                 return Observable.of(new HttpResponse({ status: 200 }));
             }
 

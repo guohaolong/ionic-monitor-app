@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionSheetController, LoadingController, ModalController } from '@ionic/angular';
+import { ActionSheetController, LoadingController, ModalController, AlertController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 import { User, AuthService } from './../../services/auth.service';
 import { ImageViewerComponent } from './../../components/image-viewer/image-viewer.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personal',
@@ -21,6 +22,8 @@ export class PersonalPage implements OnInit {
     private actionSheetController: ActionSheetController,
     private loadingController: LoadingController,
     private modalController: ModalController,
+    private alertController: AlertController,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -107,6 +110,39 @@ export class PersonalPage implements OnInit {
       // Handle error
       console.log('Camera issue:' + err);
       loading.dismiss();
+    });
+  }
+
+  async logout() {
+    const alert = await this.alertController.create({
+      header: 'Confirm',
+      message: 'Are you sure to logout?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Cancel clicked!');
+          }
+        },
+        {
+          text: 'OK',
+          handler: () => {
+            this.logoutHandle();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  logoutHandle(): void {
+    this.authService.logout().subscribe(response => {
+      if (response && response.status === 200) {
+        this.router.navigateByUrl('/login');
+      }
+    }, error => {
+      console.error(error);
     });
   }
 

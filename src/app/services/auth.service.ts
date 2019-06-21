@@ -31,6 +31,12 @@ export class AuthService {
 
     return false;
   }
+
+  logout(): Observable<any> {
+    return this.http.post(appApis.logout, {}, { observe: 'response' }).map(res => {
+      return res;
+    });
+  }
 }
 
 export interface User {
